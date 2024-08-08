@@ -61,3 +61,6 @@ h2 {
   font-weight: bolder;
 }
 
+nav ul li a{
+  scroll-behavior: smooth;
+}
