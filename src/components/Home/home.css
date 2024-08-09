@@ -1,7 +1,25 @@
-body, html, #root {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-  
-  
+.home {
+ 
+}
+.home-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-image {
+  width: 150px; 
+  height: auto;
+  margin-right: 20px;
+}
+
+.home-text {
+  max-width: 600px; 
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+}
