@@ -54,6 +54,7 @@
   color: var(--secondary-color);
   margin-bottom: 1.5rem;
   font-weight: 600;
+  min-height: 2.5rem;
 }
 
 .hero-text p {
@@ -180,6 +181,24 @@
     transform: translate(-50%, 20px);
     opacity: 0;
   }
+}
+
+.typewriter {
+  display: inline-block;
+  position: relative;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 3px;
+  animation: blink 1s infinite;
+  color: var(--secondary-color);
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 @media (max-width: 992px) {

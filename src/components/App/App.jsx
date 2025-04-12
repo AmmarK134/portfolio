@@ -7,6 +7,7 @@ import Skills from '../Skills/Skills';
 import Projects from '../Projects/Projects';
 import Contact from '../Contact/Contact';
 import Footer from '../Footer/Footer';
+import Chat from '../Chat/Chat';
 import './App.css';
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
           <Skills />
           <Projects />
           <Contact />
+          <Chat />
         </main>
         <Footer />
       </div>
