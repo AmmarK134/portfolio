@@ -1,32 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Navbar from '../Navbar/Navbar';
+import Hero from '../Hero/Hero';
+import About from '../About/About';
+import Skills from '../Skills/Skills';
+import Projects from '../Projects/Projects';
+import Contact from '../Contact/Contact';
+import Footer from '../Footer/Footer';
 import './App.css';
-import Home from '../Home/home';
-import Chat from '../Chat/Chat'; // Import Chat component
 
-function App() {
-  const [count, setCount] = useState(0);
-
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h2>Ammar Kashif</h2> 
-        <nav>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#chat">Chat</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-      </header>
-      
-      <Home /> 
-
-      {/* Chat section at the bottom */}
-      <div className="chat-box">
-        <Chat />
+    <Router>
+      <div className="app">
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Contact />
+        </main>
+        <Footer />
       </div>
-    </div>
+    </Router>
   );
-}
+};
 
 export default App;
