@@ -2,10 +2,15 @@
 
 let threadId = null;
 
+const BASE_URL = 'http://localhost:5000'; // Add base URL
+
 export const initializeChat = async () => {
   try {
-    const response = await fetch('/api/assistant/create-thread', {
-      method: 'POST'
+    const response = await fetch(`${BASE_URL}/api/assistant/create-thread`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
     });
     
     if (!response.ok) {
@@ -28,7 +33,7 @@ export const fetchAssistantResponse = async (message) => {
       threadId = await initializeChat();
     }
 
-    const response = await fetch('/api/assistant/chat', {
+    const response = await fetch(`${BASE_URL}/api/assistant/chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

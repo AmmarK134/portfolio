@@ -9,9 +9,9 @@ const Chat = () => {
   const [error, setError] = useState(null);
   const messagesEndRef = useRef(null);
   const chatInitialized = useRef(false);
+  const shouldAutoScroll = useRef(true);
 
   useEffect(() => {
-    // Initialize chat when component mounts, but don't scroll
     if (!chatInitialized.current) {
       initializeChat().catch(err => {
         console.error('Failed to initialize chat:', err);
@@ -21,12 +21,23 @@ const Chat = () => {
     }
   }, []);
 
+  const scrollToBottom = () => {
+    if (shouldAutoScroll.current && messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   useEffect(() => {
-    // Only scroll to bottom when messages change and there are messages
     if (messages.length > 0) {
-      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+      scrollToBottom();
     }
   }, [messages]);
+
+  const handleScroll = (e) => {
+    const { scrollTop, scrollHeight, clientHeight } = e.target;
+    const isAtBottom = Math.abs(scrollHeight - scrollTop - clientHeight) < 10;
+    shouldAutoScroll.current = isAtBottom;
+  };
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
@@ -40,11 +51,19 @@ const Chat = () => {
     try {
       const assistantReply = await fetchAssistantResponse(input);
       setMessages(prev => [...prev, { sender: 'assistant', text: assistantReply }]);
+      shouldAutoScroll.current = true;
     } catch (error) {
       console.error('Error sending message:', error);
       setError(error.message || 'Failed to get response from assistant. Please try again.');
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault(); // Prevent default scroll behavior
+      handleSend();
     }
   };
 
@@ -54,7 +73,7 @@ const Chat = () => {
         <h2>Chat with Portfolio Assistant</h2>
       </div>
       
-      <div className="messages">
+      <div className="messages" onScroll={handleScroll}>
         {messages.map((msg, index) => (
           <div key={index} className={`message ${msg.sender}`}>
             <div className="message-content">
@@ -85,7 +104,7 @@ const Chat = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask me anything about Ammar's portfolio..."
-          onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+          onKeyPress={handleKeyPress}
           disabled={isLoading}
         />
         <button 
