@@ -1,9 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import AmmarImage from '../../assets/ammar.JPG';
 import './Hero.css';
 
 const Hero = () => {
+  const [text, setText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(150);
+
+  const phrases = [
+    'Full Stack Developer & AI Enthusiast',
+    'Natural Born Toronto Man'
+  ];
+
+  useEffect(() => {
+    const handleTyping = () => {
+      const currentIndex = loopNum % phrases.length;
+      const fullText = phrases[currentIndex];
+
+      if (isDeleting) {
+        setText(fullText.substring(0, text.length - 1));
+        setTypingSpeed(100); // Faster when deleting
+      } else {
+        setText(fullText.substring(0, text.length + 1));
+        setTypingSpeed(150); // Normal speed when typing
+      }
+
+      if (!isDeleting && text === fullText) {
+        setTimeout(() => setIsDeleting(true), 2000); // Wait 2s before deleting
+      } else if (isDeleting && text === '') {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+        setTypingSpeed(500); // Pause before starting next word
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, loopNum, typingSpeed]);
+
   return (
     <section id="hero" className="hero">
       <motion.div
@@ -19,7 +55,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <h1>Ammar Kashif</h1>
-          <h2>Full Stack Developer & AI Enthusiast</h2>
+          <h2 className="typewriter">{text}<span className="cursor">|</span></h2>
           <p>
             Building innovative solutions with modern technologies.
             Specializing in web development, AI integration, and creating seamless user experiences.

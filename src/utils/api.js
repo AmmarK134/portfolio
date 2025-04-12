@@ -1,16 +1,37 @@
 // src/utils/api.js
 
+let threadId = null;
+
+export const initializeChat = async () => {
+  try {
+    const response = await fetch('/api/assistant/create-thread', {
+      method: 'POST'
+    });
+    const data = await response.json();
+    threadId = data.threadId;
+    return threadId;
+  } catch (error) {
+    console.error('Error initializing chat:', error);
+    throw error;
+  }
+};
+
 export const fetchAssistantResponse = async (message) => {
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    // If no thread exists, create one
+    if (!threadId) {
+      threadId = await initializeChat();
+    }
+
+    const response = await fetch('/api/assistant/chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: 'gpt-4',  // or 'gpt-3.5-turbo' if you don't have access to gpt-4
-        messages: [{ role: 'user', content: message }],
+        threadId,
+        message,
+        assistantId: 'proj_MnTFxY25DClaR7EgXF0rncFD' // Hardcode the assistant ID for now
       }),
     });
 
@@ -21,7 +42,7 @@ export const fetchAssistantResponse = async (message) => {
     }
 
     const data = await response.json();
-    return data.choices[0].message.content;  // Extract the assistant's response
+    return data.response;
   } catch (error) {
     console.error("Error fetching assistant response:", error);
     return "Error fetching response from assistant.";
