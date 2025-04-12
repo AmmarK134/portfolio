@@ -7,6 +7,11 @@ export const initializeChat = async () => {
     const response = await fetch('/api/assistant/create-thread', {
       method: 'POST'
     });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
     const data = await response.json();
     threadId = data.threadId;
     return threadId;
@@ -30,21 +35,19 @@ export const fetchAssistantResponse = async (message) => {
       },
       body: JSON.stringify({
         threadId,
-        message,
-        assistantId: 'proj_MnTFxY25DClaR7EgXF0rncFD' // Hardcode the assistant ID for now
+        message
       }),
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error("Error response:", errorText);
-      throw new Error(`Network response was not ok: ${response.status}`);
+      const errorData = await response.json();
+      throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
     }
 
     const data = await response.json();
     return data.response;
   } catch (error) {
     console.error("Error fetching assistant response:", error);
-    return "Error fetching response from assistant.";
+    throw error;
   }
 };
