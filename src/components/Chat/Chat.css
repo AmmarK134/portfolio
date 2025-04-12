@@ -12,6 +12,9 @@
   max-height: 500px;
   position: relative;
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.6s ease-out forwards;
 }
 
 .chat-header {
@@ -117,6 +120,17 @@
   }
 }
 
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .input-container {
   height: 60px;
   padding: 0.5rem 0.75rem;
@@ -196,6 +210,14 @@
 
   .messages {
     padding: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-container {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }
   
