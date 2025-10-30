@@ -3,6 +3,46 @@ import { motion } from 'framer-motion';
 import AmmarImage from '../../assets/ammar.JPG';
 import './Hero.css';
 
+// Floating particles component
+const FloatingParticles = () => {
+  const particles = Array.from({ length: 20 }, (_, i) => ({
+    id: i,
+    size: Math.random() * 4 + 2,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    delay: Math.random() * 20,
+    duration: Math.random() * 10 + 10,
+  }));
+
+  return (
+    <div className="floating-particles">
+      {particles.map((particle) => (
+        <motion.div
+          key={particle.id}
+          className="particle"
+          style={{
+            width: particle.size,
+            height: particle.size,
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+          }}
+          animate={{
+            y: [0, -30, 0],
+            x: [0, Math.random() * 20 - 10, 0],
+            opacity: [0.3, 0.8, 0.3],
+          }}
+          transition={{
+            duration: particle.duration,
+            delay: particle.delay,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
 const Hero = () => {
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -11,7 +51,9 @@ const Hero = () => {
 
   const phrases = [
     'Full Stack Developer & AI Enthusiast',
-    'Natural Born Toronto Man'
+    'Building the Future with Code',
+    'Toronto Native, Global Mindset',
+    'Passionate Problem Solver'
   ];
 
   useEffect(() => {
@@ -42,6 +84,8 @@ const Hero = () => {
 
   return (
     <section id="hero" className="hero">
+      <FloatingParticles />
+      
       <motion.div
         className="hero-content"
         initial={{ opacity: 0, y: 20 }}
@@ -54,37 +98,88 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1>Ammar Kashif</h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Hi, I'm <span className="highlight">Ammar Kashif</span>
+          </motion.h1>
           <h2 className="typewriter">{text}<span className="cursor">|</span></h2>
-          <p>
-            Building innovative solutions with modern technologies.
-            Specializing in web development, AI integration, and creating seamless user experiences.
-          </p>
-          <div className="hero-cta">
-            <a href="#projects" className="primary-btn">View Projects</a>
-            <a href="#contact" className="secondary-btn">Get in Touch</a>
-          </div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            I craft digital experiences that matter. From full-stack web applications 
+            to AI-powered solutions, I bring ideas to life with clean code and creative design.
+          </motion.p>
+          <motion.div 
+            className="hero-cta"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <a href="#projects" className="primary-btn">
+              <span>View My Work</span>
+              <motion.div
+                className="btn-bg"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              />
+            </a>
+            <a href="#contact" className="secondary-btn">
+              <span>Let's Connect</span>
+            </a>
+          </motion.div>
         </motion.div>
 
         <motion.div
           className="hero-image"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
         >
           <div className="profile-image">
-            <img src={AmmarImage} alt="Ammar Kashif" onError={(e) => {
-              e.target.onerror = null;
-              e.target.src = 'https://via.placeholder.com/400x400.png?text=AK';
-            }} />
+            <motion.img 
+              src={AmmarImage} 
+              alt="Ammar Kashif" 
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = 'https://via.placeholder.com/400x400.png?text=AK';
+              }} 
+            />
+            <motion.div
+              className="profile-glow"
+              animate={{
+                scale: [1, 1.1, 1],
+                opacity: [0.5, 0.8, 0.5],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
           </div>
         </motion.div>
       </motion.div>
 
-      <div className="hero-scroll">
-        <div className="mouse"></div>
+      <motion.div 
+        className="hero-scroll"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1 }}
+      >
+        <motion.div 
+          className="mouse"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        ></motion.div>
         <span>Scroll Down</span>
-      </div>
+      </motion.div>
     </section>
   );
 };

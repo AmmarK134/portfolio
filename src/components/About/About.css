@@ -1,5 +1,37 @@
 .about {
   padding: var(--section-padding);
+  background: var(--primary-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(212, 47, 88, 0.2), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(224, 133, 157, 0.15), transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(255, 107, 107, 0.1), transparent 50%);
+  z-index: 1;
+  animation: backgroundShift 25s ease-in-out infinite;
+}
+
+.about::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(45deg, transparent 30%, rgba(212, 47, 88, 0.03) 50%, transparent 70%),
+    linear-gradient(-45deg, transparent 30%, rgba(224, 133, 157, 0.03) 50%, transparent 70%);
+  z-index: 1;
+  animation: backgroundPattern 18s linear infinite;
 }
 
 .about-content {
@@ -8,6 +40,8 @@
   display: flex;
   flex-direction: column;
   gap: 4rem;
+  position: relative;
+  z-index: 2;
 }
 
 .about-text {

@@ -68,10 +68,11 @@ const Chat = () => {
   };
 
   return (
-    <div className="chat-container">
-      <div className="chat-header">
-        <h2>Chat with Portfolio Assistant</h2>
-      </div>
+    <section className="chat-section">
+      <div className="chat-container">
+        <div className="chat-header">
+          <h2>Chat with Portfolio Assistant</h2>
+        </div>
       
       <div className="messages" onScroll={handleScroll}>
         {messages.map((msg, index) => (
@@ -114,7 +115,8 @@ const Chat = () => {
           {isLoading ? 'Sending...' : 'Send'}
         </button>
       </div>
-    </div>
+      </div>
+    </section>
   );
 };
 

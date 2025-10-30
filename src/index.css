@@ -29,6 +29,15 @@ body {
   background: var(--primary-color);
   color: var(--text-color);
   line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  background: var(--primary-color);
 }
 
 img {

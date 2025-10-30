@@ -126,12 +126,12 @@ button:hover {
 
 .app {
   min-height: 100vh;
-  background-color: var(--background-color);
+  background: var(--primary-color);
   color: var(--text-color);
 }
 
 main {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
 }
