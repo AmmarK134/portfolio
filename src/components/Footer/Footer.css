@@ -1,11 +1,25 @@
 .footer {
-  background: var(--primary-color);
-  color: white;
-  padding: 2rem 0 1rem;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border);
+  padding: 3rem 0 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 1px;
+  background: var(--gradient-primary);
+  opacity: 0.5;
 }
 
 .footer-content {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 2rem;
   display: flex;
@@ -19,57 +33,69 @@
 }
 
 .footer-logo h3 {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 2rem;
   font-weight: 700;
+  letter-spacing: -0.04em;
   margin-bottom: 0.5rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .footer-logo p {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
 }
 
 .footer-social {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .footer-social a {
-  color: white;
-  font-size: 1.5rem;
-  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  color: var(--text-color-light);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  font-size: 1.15rem;
+  transition: var(--transition);
 }
 
 .footer-social a:hover {
-  color: var(--secondary-color);
+  color: var(--accent-1);
+  background: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.25);
   transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
 }
 
 .footer-bottom {
   text-align: center;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--border);
   width: 100%;
 }
 
 .footer-bottom p {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-size: 0.83rem;
+  letter-spacing: 0.02em;
 }
 
 @media (max-width: 768px) {
   .footer {
-    padding: 1.5rem 0 1rem;
-  }
-
-  .footer-content {
-    gap: 1.5rem;
+    padding: 2.5rem 0 1.5rem;
   }
 
   .footer-logo h3 {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
   }
-
-  .footer-social a {
-    font-size: 1.3rem;
-  }
-} 
+}
