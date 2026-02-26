@@ -1,268 +1,328 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaSpotify, FaReact, FaNodeJs, FaHtml5, FaCss3Alt } from 'react-icons/fa';
-import { SiNextdotjs, SiTypescript, SiTailwindcss, SiOpenai, SiVisualbasic } from 'react-icons/si';
+import {
+  FaGithub, FaExternalLinkAlt, FaSpotify, FaReact,
+  FaNodeJs, FaHtml5, FaCss3Alt, FaCode, FaLock, FaRobot
+} from 'react-icons/fa';
+import {
+  SiNextdotjs, SiTypescript, SiTailwindcss, SiOpenai,
+  SiVisualbasic, SiPython, SiJavascript, SiFlask
+} from 'react-icons/si';
 import './Projects.css';
 
 const projects = [
   {
     id: 1,
-    title: 'PlaylistHelper',
-    subtitle: 'AI-Powered Spotify Playlist Creator',
-    description: 'A complete Spotify companion web application that makes music discovery and control simple, intuitive, and fully personalized. Users can create playlists through the web app based on their mood, preferred artists, or specific genres, with automatic creation and saving to their Spotify account.',
-    longDescription: 'PlaylistHelper is a comprehensive Spotify companion web application built to make music discovery and control simple, intuitive, and fully personalized. The project allows users to create playlists directly through the web app based on their current mood, preferred artists, or specific genres. Once generated, these playlists are automatically created and saved inside the user\'s Spotify account, eliminating the need for manual curation. Beyond playlist creation, PlaylistHelper gives users complete control over their listening experience with play/pause, skip/replay, volume control, playlist deletion, and listening activity monitoring.',
-    image: 'https://via.placeholder.com/600x400/1DB954/FFFFFF?text=PlaylistHelper+Preview',
-    technologies: ['Next.js', 'TypeScript', 'React.js', 'Node.js', 'Tailwind CSS', 'Spotify Web API', 'OpenAI API', 'REST APIs', 'OAuth', 'Full-Stack Development', 'Responsive Web Design', 'UI/UX'],
-    icons: [SiNextdotjs, SiTypescript, FaReact, FaNodeJs, SiTailwindcss, FaSpotify, SiOpenai],
-    github: 'https://github.com/AmmarK134/playlisthelper',
-    live: '#',
-    period: 'Oct 2025',
+    number: '01',
+    title: 'Bumby',
+    subtitle: 'AI Image Generation & Content Workflow',
+    description: 'A proof-of-concept AI workflow (built for Riipen/Akito) that converts product photos into branded lifestyle or seasonal visuals. Includes a structured image intake process, batch handling, and quick-start documentation for non-technical stakeholders.',
+    colorFrom: '#a855f7',
+    colorTo: '#7c3aed',
+    technologies: ['Python', 'OpenAI API', 'AI Image Tools', 'Workflow Automation', 'Documentation'],
+    icons: [SiPython, SiOpenai, FaRobot],
+    github: null,
+    live: null,
+    period: 'Dec 2025',
     status: 'Completed',
     features: [
-      'AI-powered playlist generation based on mood and preferences',
-      'Real-time Spotify playback control',
-      'Automatic playlist creation and saving',
-      'User authentication with Spotify OAuth',
-      'Detailed listening statistics and analytics',
-      'Responsive design with modern UI/UX'
+      'AI-driven product photo → branded lifestyle image pipeline',
+      'Structured image intake with naming conventions & batch handling',
+      'Evaluated multiple AI tools for consistency and turnaround efficiency',
+      'Written setup docs & quick-start guides for non-technical users',
     ],
-    color: '#1DB954'
   },
   {
     id: 2,
-    title: 'Portfolio Assistant',
-    subtitle: 'AI-Powered Personal Portfolio',
-    description: 'A personal portfolio website featuring an interactive AI assistant powered by OpenAI\'s API. This project enhances user engagement by providing a unique, conversational experience, allowing visitors to ask questions and receive tailored responses about my work and experience.',
-    longDescription: 'Currently developing a personal portfolio website featuring an interactive AI assistant powered by OpenAI\'s API. This project aims to enhance user engagement by providing a unique, conversational experience, allowing visitors to ask questions and receive tailored responses. I\'m integrating the assistant seamlessly within the portfolio using React and JavaScript, focusing on clean UI/UX design and smooth API integration.',
-    image: 'https://via.placeholder.com/600x400/21247C/FFFFFF?text=Portfolio+AI+Assistant',
-    technologies: ['Web Development', 'React.js', 'JavaScript', 'Application Programming Interfaces (API)', 'UI/UX', 'Artificial Intelligence (AI)', 'Front-End Development'],
-    icons: [FaReact, FaHtml5, FaCss3Alt, SiOpenai],
-    github: 'https://github.com/AmmarK134/portfolio',
-    live: '#',
-    period: 'Sep 2024 - Jan 2025',
-    status: 'In Progress',
+    number: '02',
+    title: 'PlaylistHelper',
+    subtitle: 'AI-Powered Spotify Playlist Generator',
+    description: 'A full-stack Spotify companion that lets users generate personalized playlists from natural-language prompts using OpenAI. Playlists are created and saved directly to the user\'s Spotify account, with real-time playback controls and listening analytics.',
+    colorFrom: '#1DB954',
+    colorTo: '#17a349',
+    technologies: ['Next.js', 'TypeScript', 'React.js', 'Node.js', 'Tailwind CSS', 'Spotify API', 'OpenAI API', 'OAuth 2.0 (PKCE)'],
+    icons: [SiNextdotjs, SiTypescript, FaReact, FaNodeJs, SiTailwindcss, FaSpotify, SiOpenai],
+    github: 'https://github.com/AmmarK134/playlisthelper',
+    live: null,
+    period: 'Oct 2025',
+    status: 'Completed',
     features: [
-      'Interactive AI chat assistant',
-      'Seamless API integration',
-      'Modern React-based architecture',
-      'Responsive design',
-      'Real-time conversation capabilities',
-      'Clean and intuitive UI/UX'
+      'Natural-language playlist generation via OpenAI API',
+      'OAuth 2.0 with PKCE (NextAuth) for secure Spotify sign-in',
+      'Real-time Spotify playback control (play, skip, volume)',
+      'Automatic playlist creation & saving to user\'s Spotify account',
+      'Structured error handling, input validation & deployment docs',
     ],
-    color: '#21247C'
   },
   {
     id: 3,
-    title: 'AlarmClock',
-    subtitle: 'Comprehensive Desktop Application',
-    description: 'A comprehensive Alarm Clock application featuring a user-friendly interface with multiple alarm tabs. The project includes a real-time clock panel alongside three independent alarm tabs with customizable settings and sound options.',
-    longDescription: 'Developed a comprehensive Alarm Clock application featuring a user-friendly interface with multiple alarm tabs. The project includes a real-time clock panel alongside three independent alarm tabs. Each alarm can be customized with AM/PM settings, specific hours, and sounds. Key features include set and cancel functionality, time validation, alarm activation, AM/PM handling, and dynamic interface adjustment.',
-    image: 'https://via.placeholder.com/600x400/4A90E2/FFFFFF?text=AlarmClock+Application',
-    technologies: ['Visual Basic', 'Visual Basic for Applications (VBA)', 'Web Applications', 'Visual Basic .NET (VB.NET)', 'Back-End Web Development', 'VBA Programming'],
-    icons: [SiVisualbasic],
-    github: 'https://github.com/AmmarK134/AlarmClock_V1',
-    live: '#',
-    period: 'Oct 2024',
+    number: '03',
+    title: 'COSA',
+    subtitle: 'Co-op Support Application',
+    description: 'A multi-role Flask web application supporting students, coordinators, employers, and admins through the co-op process. Features role-based access control, optional two-factor authentication, and 40+ manually verified QA test cases.',
+    colorFrom: '#0ea5e9',
+    colorTo: '#0284c7',
+    technologies: ['Python', 'Flask', 'SQLAlchemy', 'PyOTP', '2FA', 'QA Testing', 'Session Auth'],
+    icons: [SiPython, SiFlask, FaLock, FaCode],
+    github: null,
+    live: null,
+    period: 'May 2025',
     status: 'Completed',
     features: [
-      'Multiple alarm tabs with independent settings',
-      'Real-time clock synchronization',
-      'Custom sound selection (Crickets, Bird, Cow)',
-      'Time input validation',
-      'Dynamic interface adjustments',
-      'AM/PM handling with pre-selection'
+      'Multi-role architecture: students, coordinators, employers, admins',
+      'SQLAlchemy data models with authentication & session handling',
+      'Optional 2FA via PyOTP with QR-based setup flow',
+      '40+ manual QA test cases executed across all key workflows',
+      'Requirements gathered from end users & project mentors',
     ],
-    color: '#4A90E2'
   },
   {
     id: 4,
-    title: 'PlanetPal',
-    subtitle: 'Sustainable Waste Management WebApp',
-    description: 'An innovative web application focused on sustainable waste management, featuring an AI-powered chat assistant. The platform helps users make environmentally conscious decisions about waste disposal and recycling.',
-    longDescription: 'PlanetPal is a webapp that tackles the growing issue of waste by creating sustainable solutions to manage it more effectively. We\'re focused on reducing environmental impact and promoting responsible waste practices to protect our planet for future generations.',
-    image: 'https://via.placeholder.com/600x400/00C851/FFFFFF?text=PlanetPal+Eco+App',
-    technologies: ['React.js', 'Cascading Style Sheets (CSS)', 'HTML', 'GitHub', 'GPT-3', 'Teamwork'],
-    icons: [FaReact, FaHtml5, FaCss3Alt, SiOpenai],
-    github: '#',
-    live: '#',
-    period: 'Aug 2024',
+    number: '04',
+    title: 'Medical Passport',
+    subtitle: 'Secure Health Data Sharing Platform',
+    description: 'As CTO & Co-Founder of MedPass (Signalyze), led development of a web platform for secure health data sharing and interoperability. Secured $5,000 in grant funding. Built secure Python/React prototypes exploring privacy-first access control and multi-system synchronization.',
+    colorFrom: '#f43f5e',
+    colorTo: '#e11d48',
+    technologies: ['Python', 'React.js', 'REST APIs', 'Secure Auth', 'System Design', 'Startup'],
+    icons: [SiPython, FaReact, FaLock],
+    github: null,
+    live: null,
+    period: 'Oct 2024 – Sep 2025',
     status: 'Completed',
     features: [
-      'AI-powered waste management assistant',
-      'Interactive chat interface',
-      'Modern, eco-themed design',
-      'Contact form for user inquiries',
-      'Responsive layout',
-      'Team collaboration features'
+      'Secure data-sharing prototypes with privacy-first access control',
+      'Scalable synchronization & permission models for multi-system interop',
+      'User research → prioritized user flows & iterative prototypes',
+      'Secured $5,000 in grant funding; supported early-stage fundraising',
+      'Architecture docs & integration patterns for knowledge transfer',
     ],
-    color: '#00C851'
   },
   {
     id: 5,
+    number: '05',
+    title: 'Portfolio AI Assistant',
+    subtitle: 'Interactive Portfolio with Built-In AI Chat',
+    description: 'This portfolio — a React + Node.js site with an embedded OpenAI-powered AI assistant. Visitors can have real conversations about my work, skills, and experience, creating a uniquely engaging developer showcase.',
+    colorFrom: '#6366f1',
+    colorTo: '#8b5cf6',
+    technologies: ['React.js', 'JavaScript', 'OpenAI API', 'Node.js', 'Express.js', 'Framer Motion'],
+    icons: [FaReact, SiJavascript, SiOpenai, FaNodeJs],
+    github: 'https://github.com/AmmarK134/portfolio',
+    live: null,
+    period: 'Sep 2024 – Present',
+    status: 'In Progress',
+    features: [
+      'Interactive AI chat assistant powered by OpenAI\'s API',
+      'Thread-based conversation with real-time message streaming',
+      'Smooth scroll animations with Framer Motion',
+      'Fully responsive across all devices',
+      'Premium dark UI with indigo/violet design system',
+    ],
+  },
+  {
+    id: 6,
+    number: '06',
+    title: 'PlanetPal',
+    subtitle: 'AI-Powered Waste Management WebApp',
+    description: 'A team-built eco-focused web application tackling global waste with an AI-powered assistant (GPT-3) that guides users on sustainable disposal and recycling practices.',
+    colorFrom: '#10b981',
+    colorTo: '#059669',
+    technologies: ['React.js', 'CSS', 'HTML', 'GPT-3', 'Teamwork'],
+    icons: [FaReact, FaHtml5, FaCss3Alt, SiOpenai],
+    github: null,
+    live: null,
+    period: 'Aug 2024',
+    status: 'Completed',
+    features: [
+      'AI-powered waste management guidance via GPT-3',
+      'Interactive eco-friendly chat interface',
+      'Modern, sustainable-themed responsive UI',
+      'Collaborative team project',
+    ],
+  },
+  {
+    id: 7,
+    number: '07',
+    title: 'AlarmClock',
+    subtitle: 'Multi-Alarm Desktop Application',
+    description: 'A feature-complete desktop Alarm Clock built in Visual Basic .NET. Supports three independent alarms with custom sounds, AM/PM handling, and full time validation.',
+    colorFrom: '#f59e0b',
+    colorTo: '#d97706',
+    technologies: ['Visual Basic .NET', 'VBA', 'Windows Forms', 'Desktop Development'],
+    icons: [SiVisualbasic, FaCode],
+    github: 'https://github.com/AmmarK134/AlarmClock_V1',
+    live: null,
+    period: 'Oct 2024',
+    status: 'Completed',
+    features: [
+      'Three independent alarm tabs with custom settings',
+      'Real-time system clock synchronization',
+      'Custom alarm sounds (Crickets, Bird, Cow)',
+      'Time input validation and AM/PM handling',
+    ],
+  },
+  {
+    id: 8,
+    number: '08',
     title: 'Recipe Website',
-    subtitle: 'First HTML Project',
-    description: 'My first HTML project featuring three dishes, serving as a great introduction to HTML and CSS implementation. This project demonstrates fundamental web development skills and design principles.',
-    longDescription: 'I am proud to introduce my first HTML project. Currently featuring three dishes, this was a great way to learn how HTML works and how I can implement CSS into this. This project showcases my journey into web development and understanding of basic HTML structure and CSS styling.',
-    image: 'https://via.placeholder.com/600x400/FF6B6B/FFFFFF?text=Recipe+Website',
-    technologies: ['HTML'],
-    icons: [FaHtml5],
+    subtitle: 'First HTML & CSS Project',
+    description: 'Where the journey started — a clean recipe showcase site built with pure HTML and CSS. Deployed live on GitHub Pages.',
+    colorFrom: '#ef4444',
+    colorTo: '#dc2626',
+    technologies: ['HTML5', 'CSS3', 'GitHub Pages'],
+    icons: [FaHtml5, FaCss3Alt],
     github: 'https://github.com/AmmarK134/recipes_html',
     live: 'https://ammark134.github.io/recipes_html/',
     period: 'Feb 2024',
     status: 'Completed',
     features: [
-      'Clean HTML structure',
-      'CSS styling implementation',
-      'Three featured recipes',
-      'Responsive design basics',
-      'GitHub Pages deployment',
-      'Learning project documentation'
+      'Semantic HTML5 structure',
+      'CSS styling and responsive layout basics',
+      'Three beautifully presented recipes',
+      'Deployed live on GitHub Pages',
     ],
-    color: '#FF6B6B'
-  }
+  },
 ];
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.1 },
   },
 };
 
-const itemVariants = {
-  hidden: { y: 50, opacity: 0 },
+const cardVariants = {
+  hidden: { y: 40, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut"
-    }
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
-const ProjectCard = ({ project, index }) => {
-  const [isHovered, setIsHovered] = React.useState(false);
+const ProjectCard = ({ project }) => (
+  <motion.div
+    className="project-card"
+    variants={cardVariants}
+    whileHover={{ y: -6 }}
+    transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+    style={{
+      '--color-from': project.colorFrom,
+      '--color-to': project.colorTo,
+    }}
+  >
+    <div className="card-accent-bar" />
 
-  return (
-    <motion.div
-      className="project-card"
-      variants={itemVariants}
-      whileHover={{ y: -10, scale: 1.02 }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      style={{ '--project-color': project.color }}
-    >
-      <div className="project-header">
-        <div className="project-image-container">
-          <img src={project.image} alt={project.title} />
-          <div className="project-overlay">
-            <div className="project-status">{project.status}</div>
-            <div className="project-period">{project.period}</div>
-          </div>
-        </div>
-        <div className="project-tech-icons">
-          {project.icons.slice(0, 4).map((Icon, idx) => (
-            <div key={idx} className="tech-icon">
-              <Icon size={20} />
-            </div>
-          ))}
-          {project.icons.length > 4 && (
-            <div className="tech-icon more">+{project.icons.length - 4}</div>
-          )}
-        </div>
+    <div className="card-header">
+      <div className="card-number">{project.number}</div>
+      <div className="card-status-badge" data-status={project.status}>
+        {project.status}
       </div>
+    </div>
 
-      <div className="project-content">
-        <div className="project-title-section">
-          <h3>{project.title}</h3>
-          <p className="project-subtitle">{project.subtitle}</p>
+    <div className="card-title-block">
+      <h3 className="card-title">{project.title}</h3>
+      <p className="card-subtitle">{project.subtitle}</p>
+    </div>
+
+    <p className="card-description">{project.description}</p>
+
+    <div className="card-features">
+      <ul>
+        {project.features.map((f, i) => (
+          <li key={i}>
+            <span className="feat-dot" />
+            {f}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div className="card-tech-row">
+      {project.icons.slice(0, 6).map((Icon, i) => (
+        <div key={i} className="tech-icon-chip">
+          <Icon size={16} />
         </div>
+      ))}
+      {project.icons.length > 6 && (
+        <div className="tech-icon-chip more">+{project.icons.length - 6}</div>
+      )}
+    </div>
 
-        <p className="project-description">{project.description}</p>
+    <div className="card-tags">
+      {project.technologies.slice(0, 5).map((t, i) => (
+        <span key={i} className="tech-tag">{t}</span>
+      ))}
+      {project.technologies.length > 5 && (
+        <span className="tech-tag more">+{project.technologies.length - 5}</span>
+      )}
+    </div>
 
-        <div className="project-features">
-          <h4>Key Features</h4>
-          <ul>
-            {project.features.slice(0, 3).map((feature, idx) => (
-              <li key={idx}>{feature}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="project-technologies">
-          {project.technologies.slice(0, 6).map((tech, idx) => (
-            <span key={idx} className="tech-tag">{tech}</span>
-          ))}
-          {project.technologies.length > 6 && (
-            <span className="tech-tag more">+{project.technologies.length - 6} more</span>
-          )}
-        </div>
-
-        <div className="project-links">
-          <a 
-            href={project.github} 
-            className="project-link github" 
-            target="_blank" 
+    <div className="card-footer">
+      <span className="card-period">{project.period}</span>
+      <div className="card-links">
+        {project.github && (
+          <a
+            href={project.github}
+            className="card-link"
+            target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
             title="View Code"
           >
-            <FaGithub size={20} />
+            <FaGithub size={14} />
+            <span>Code</span>
           </a>
-          {project.live !== '#' && (
-            <a 
-              href={project.live} 
-              className="project-link live" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              title="Live Demo"
-            >
-              <FaExternalLinkAlt size={18} />
-            </a>
-          )}
-        </div>
+        )}
+        {project.live && (
+          <a
+            href={project.live}
+            className="card-link primary"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Live Demo"
+          >
+            <FaExternalLinkAlt size={12} />
+            <span>Live</span>
+          </a>
+        )}
       </div>
-    </motion.div>
-  );
-};
+    </div>
+  </motion.div>
+);
 
-const Projects = () => {
-  return (
-    <section className="projects" id="projects">
-      <div className="projects-container">
-        <motion.div 
-          className="section-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h2>My Projects</h2>
-          <p>A showcase of my recent work and personal projects</p>
-          <div className="section-divider"></div>
-        </motion.div>
-        
-        <motion.div 
-          className="projects-grid"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
-};
+const Projects = () => (
+  <section className="projects" id="projects">
+    <div className="projects-inner">
+      <motion.div
+        className="projects-header"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        viewport={{ once: true }}
+      >
+        <p className="projects-eyebrow">Selected Work</p>
+        <h2>My Projects</h2>
+        <p className="projects-subhead">
+          A curated showcase of what I've built — full-stack apps, AI integrations, startup ventures, and creative experiments.
+        </p>
+        <div className="section-divider" />
+      </motion.div>
 
-export default Projects; 
+      <motion.div
+        className="projects-grid"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-60px' }}
+      >
+        {projects.map((project) => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
+      </motion.div>
+    </div>
+  </section>
+);
+
+export default Projects;

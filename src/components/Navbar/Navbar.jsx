@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaDownload } from 'react-icons/fa';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -11,8 +12,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      
-      // Update active section based on scroll position
+
       const sections = ['hero', 'about', 'skills', 'projects', 'contact'];
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
@@ -22,7 +22,7 @@ const Navbar = () => {
         }
         return false;
       });
-      
+
       if (currentSection) {
         setActiveSection(currentSection);
       }
@@ -44,7 +44,7 @@ const Navbar = () => {
   ];
 
   return (
-    <motion.nav 
+    <motion.nav
       className={`navbar ${isScrolled ? 'scrolled' : ''}`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -52,17 +52,17 @@ const Navbar = () => {
     >
       <div className="navbar-container">
         <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
         >
           <Link to="hero" smooth={true} duration={500} className="logo">
-            <span className="logo-text">Ammar</span>
+            <span className="logo-text">Ammar Kashif</span>
             <span className="logo-dot">.</span>
           </Link>
         </motion.div>
 
         <div className="menu-icon" onClick={toggleMenu}>
-          <motion.div 
+          <motion.div
             className={`hamburger ${isMenuOpen ? 'active' : ''}`}
             whileTap={{ scale: 0.9 }}
           >
@@ -80,10 +80,10 @@ const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
             >
-              <Link 
-                to={item.to} 
-                smooth={true} 
-                duration={500} 
+              <Link
+                to={item.to}
+                smooth={true}
+                duration={500}
                 onClick={() => setIsMenuOpen(false)}
                 className={`nav-link ${activeSection === item.to ? 'active' : ''}`}
               >
@@ -99,10 +99,27 @@ const Navbar = () => {
               </Link>
             </motion.li>
           ))}
+
+          <motion.li
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: navItems.length * 0.1 }}
+          >
+            <a
+              href="/Ammar_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-resume-btn"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <FaDownload size={13} />
+              <span>Resume</span>
+            </a>
+          </motion.li>
         </ul>
       </div>
     </motion.nav>
   );
 };
 
-export default Navbar; 
+export default Navbar;
